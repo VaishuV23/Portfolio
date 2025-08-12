@@ -119,13 +119,7 @@
       border: 1px solid #eee;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      opacity: 0; /* for fade-in */
-      transform: translateY(20px);
-    }
-    .project.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      cursor: default;
     }
     .project:hover {
       transform: translateY(-5px);
@@ -167,13 +161,6 @@
     /* Smooth scroll offset for fixed header */
     section {
       scroll-margin-top: 80px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     /* Dark Mode Variables */
@@ -188,9 +175,6 @@
       --text-color: #e0e0e0;
       --text-secondary: #bbb;
       --project-bg: #1e1e1e;
-      header {
-        background: linear-gradient(90deg, #004085, #007bff);
-      }
     }
   </style>
 </head>
@@ -209,7 +193,7 @@
 
   <div class="container">
     <!-- Hero -->
-    <section class="hero fade-in">
+    <section class="hero">
       <div class="hero-text">
         <h2>Hi — I’m Vaishnavi.<br><span>Building reliable, high-performance web apps with precision and creativity.</span></h2>
         <p>
@@ -224,7 +208,7 @@
     </section>
 
     <!-- Experience -->
-    <section id="experience" class="fade-in">
+    <section id="experience">
       <h3>Experience</h3>
       <div class="experience-item">
         <h4>Software Development Engineer (SDE) Intern – Gen</h4>
@@ -240,7 +224,7 @@
     </section>
 
     <!-- Education -->
-    <section id="Education" class="fade-in">
+    <section id="Education">
       <h3>Education</h3>
       <div class="education-item">
         <h4>B.Tech in Information Technology</h4>
@@ -265,7 +249,7 @@
     </section>
 
     <!-- Projects -->
-    <section id="projects" class="fade-in">
+    <section id="projects">
       <h3>Selected Projects</h3>
       <div class="projects">
         <div class="project">
@@ -289,7 +273,7 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="fade-in">
+    <section id="contact">
       <h3>Contact</h3>
       <div class="contact-info">
         <p>Email: <a href="mailto:vaishupadma286@gmail.com">vaishupadma286@gmail.com</a></p>
@@ -305,25 +289,6 @@
   </footer>
 
   <script>
-    // Fade in elements on scroll
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
-    };
-
-    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        appearOnScroll.unobserve(entry.target);
-      });
-    }, appearOptions);
-
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
-    });
-
     // Dark Mode Toggle
     const toggleBtn = document.getElementById('dark-mode-toggle');
     const currentTheme = localStorage.getItem('theme');
