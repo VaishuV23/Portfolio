@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vaishnavi V | Portfolio</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8f9fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(90deg, #007bff, #00b4d8);
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: white;
+    }
+    nav a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav a:hover { color: #ffdd00; }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .hero-text {
+      flex: 1;
+    }
+    .hero-text h2 {
+      font-size: 2rem;
+      color: #222;
+    }
+    .hero-text span {
+      color: #007bff;
+      font-weight: bold;
+    }
+    .hero-text p {
+      margin-top: 10px;
+      color: #555;
+    }
+    .hero img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    /* Section Titles */
+    h3 {
+      margin-top: 40px;
+      font-size: 1.5rem;
+      border-left: 4px solid #007bff;
+      padding-left: 10px;
+      color: #007bff;
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .project {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #eee;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    }
+    .project h4 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #222;
+    }
+    .project p {
+      color: #555;
+      font-size: 0.9rem;
+      margin: 10px 0;
+    }
+    .tags span {
+      display: inline-block;
+      font-size: 0.8rem;
+      background: #e7f3ff;
+      padding: 3px 8px;
+      border-radius: 20px;
+      margin: 2px;
+      color: #007bff;
+    }
+
+    /* Contact */
+    .contact-info p {
+      margin: 5px 0;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+      background: linear-gradient(90deg, #007bff, #00b4d8);
+      font-size: 0.9rem;
+      color: white;
+    }
+
+    /* Smooth scroll offset for fixed header */
+    section {
+      scroll-margin-top: 80px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Vaishnavi V</h1>
+    <nav>
+<a href="#experience">Experience</a>
+<a href="#Education">Education</a>
+      <a href="#projects">Projects</a>
+      
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Hi — I’m Vaishnavi.<br><span>Building reliable, high-performance web apps with precision and creativity.</span></h2>
+<p>
+I’m an IT graduate with professional experience as both a Software Development Engineer (SDE) and Quality Assurance (QA) specialist. 
+In my 6-month internship, I engineered responsive, user-friendly web interfaces, optimized backend processes, and integrated scalable features using modern frameworks. 
+On the QA side, I ensured product stability through thorough manual and automated testing, built a Maven dependency analysis tool, and contributed to UI enhancements and performance upgrades. 
+I’m driven by a passion for turning ideas into functional, polished solutions that deliver a seamless user experience and meet the highest quality standards.
+</p>
+        <p><strong>Skills:</strong> Java, Python, JavaScript, HTML, CSS, PHP, Spring Boot, React, Node.js, Angular, Maven, Git, Firebase.</p>
+      </div>
+     <img src="portfolio.jpeg" alt="Vaishnavi" />
+    </section>
+
+ <!-- Experience -->
+<section id="experience">
+  <h3>Experience</h3>
+  
+  <div class="experience-item">
+    <h4>Software Development Engineer (SDE) Intern – Gen</h4>
+    <span class="duration">Jan 2024 – Jun 2024 | 6 months</span>
+    <ul>
+      <li>Designed and enhanced responsive, user-friendly web interfaces using Angular and charting frameworks to improve data visualization and user engagement.</li>
+      <li>Engineered a Maven dependency analysis tool, streamlining dependency management and reducing build issues.</li>
+      <li>Performed both manual and automated testing to ensure stability, security, and optimal performance across modules.</li>
+      <li>Collaborated on Spring framework upgrades to improve backend maintainability and efficiency.</li>
+      <li>Worked closely with cross-functional teams to deliver reliable, scalable solutions on time.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="Education">
+  <h3>Education</h3>
+  
+  <div class="education-item">
+    <h4>B.Tech in Information Technology</h4>
+    <span class="institution">Madras Institute of Technology, Anna University</span><br>
+    <span class="duration">2019 – 2023</span>
+    <p>
+      Graduated with a strong foundation in software development, data structures, algorithms, and web technologies.
+      Developed multiple academic and personal projects in web development and machine learning.
+    </p>
+
+    <h4>Achievements</h4>
+    <ul>
+      <li>Participated in Niral Thiruvizha Tamil Nadu Government Hackathon and secured 9th place.</li>
+    </ul>
+
+    <h4>Publication</h4>
+    <p>
+      <em>"Transcribing & Translating Tamil Nadu Govt Function Videos using Whisper AI"</em> – 
+      International Journal for Science and Advanced Technology in Engineering (IJSATE), May 2025.<br>
+      Developed an AI-based pipeline for multilingual accessibility, including speech-to-text, translation, and transcription.<br>
+      <a href="https://ijsate.com/v2i5p81/" target="_blank">View Publication</a>
+    </p>
+  </div>
+</section>
+
+
+
+    <!-- Projects -->
+    <section id="projects">
+  <h3>Selected Projects</h3>
+  <div class="projects">
+    <div class="project">
+      <h4>Vegetable Classification (Machine Learning)</h4>
+      <p>Developed an ML model for vegetable classification using image processing techniques, achieving 95% accuracy. <a href="#">[GitHub]</a></p>
+      <div class="tags"><span>Python</span><span>TensorFlow</span><span>CNN</span></div>
+    </div>
+    <div class="project">
+      <h4>Library Management System</h4>
+      <p>Built a web application using HTML, CSS, PHP, JavaScript, and MySQL to manage books and user history.</p>
+      <div class="tags"><span>HTML</span><span>CSS</span><span>PHP</span><span>JavaScript</span><span>MySQL</span></div>
+    </div>
+    <div class="project">
+      <h4>Recipe Organiser</h4>
+      <p>Designed a platform for browsing recipes using HTML, CSS, PHP, and MySQL, enabling search and category filters.</p>
+      <div class="tags"><span>HTML</span><span>CSS</span><span>PHP</span><span>MySQL</span></div>
+    </div>
+  </div>
+</section>
+
+
+   
+
+    <!-- Contact -->
+    <section id="contact">
+      <h3>Contact</h3>
+      <div class="contact-info">
+        <p>Email: <a href="mailto:vaishupadma286@gmail.com">vaishupadma286@gmail.com</a></p>
+        <p>Phone: 6385143382</p>
+        <p>GitHub: <a href="#">github.com/VaishuV23</a></p>
+        <p>LinkedIn: <a href="#">linkedin.com/in/vaishnavi-v234/</a></p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    © 2025 Vaishnavi V — Portfolio Website
+  </footer>
+</body>
+</html>
