@@ -11,9 +11,10 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: #f8f9fa;
-      color: #333;
+      background: var(--bg-color, #f8f9fa);
+      color: var(--text-color, #333);
       line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
     header {
       background: linear-gradient(90deg, #007bff, #00b4d8);
@@ -41,6 +42,22 @@
     }
     nav a:hover { color: #ffdd00; }
 
+    /* Dark Mode Toggle Button */
+    #dark-mode-toggle {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    #dark-mode-toggle:hover {
+      background-color: white;
+      color: #007bff;
+    }
+
     .container {
       max-width: 1000px;
       margin: auto;
@@ -60,7 +77,7 @@
     }
     .hero-text h2 {
       font-size: 2rem;
-      color: #222;
+      color: var(--text-color, #222);
     }
     .hero-text span {
       color: #007bff;
@@ -68,7 +85,7 @@
     }
     .hero-text p {
       margin-top: 10px;
-      color: #555;
+      color: var(--text-secondary, #555);
     }
     .hero img {
       width: 200px;
@@ -96,12 +113,19 @@
       margin-top: 20px;
     }
     .project {
-      background: white;
+      background: var(--project-bg, white);
       padding: 15px;
       border-radius: 10px;
       border: 1px solid #eee;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0; /* for fade-in */
+      transform: translateY(20px);
+    }
+    .project.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
     .project:hover {
       transform: translateY(-5px);
@@ -110,10 +134,10 @@
     .project h4 {
       margin: 0;
       font-size: 1.2rem;
-      color: #222;
+      color: var(--text-color, #222);
     }
     .project p {
-      color: #555;
+      color: var(--text-secondary, #555);
       font-size: 0.9rem;
       margin: 10px 0;
     }
@@ -143,6 +167,30 @@
     /* Smooth scroll offset for fixed header */
     section {
       scroll-margin-top: 80px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Dark Mode Variables */
+    :root {
+      --bg-color: #f8f9fa;
+      --text-color: #333;
+      --text-secondary: #555;
+      --project-bg: white;
+    }
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --text-secondary: #bbb;
+      --project-bg: #1e1e1e;
+      header {
+        background: linear-gradient(90deg, #004085, #007bff);
+      }
     }
   </style>
 </head>
@@ -150,106 +198,98 @@
   <header>
     <h1>Vaishnavi V</h1>
     <nav>
-<a href="#experience">Experience</a>
-<a href="#Education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#Education">Education</a>
       <a href="#projects">Projects</a>
-      
       <a href="#contact">Contact</a>
     </nav>
+    <!-- Dark Mode Toggle Button -->
+    <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
   </header>
 
   <div class="container">
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero fade-in">
       <div class="hero-text">
         <h2>Hi — I’m Vaishnavi.<br><span>Building reliable, high-performance web apps with precision and creativity.</span></h2>
-<p>
-I’m an IT graduate with professional experience as both a Software Development Engineer (SDE) and Quality Assurance (QA) specialist. 
-In my 6-month internship, I engineered responsive, user-friendly web interfaces, optimized backend processes, and integrated scalable features using modern frameworks. 
-On the QA side, I ensured product stability through thorough manual and automated testing, built a Maven dependency analysis tool, and contributed to UI enhancements and performance upgrades. 
-I’m driven by a passion for turning ideas into functional, polished solutions that deliver a seamless user experience and meet the highest quality standards.
-</p>
+        <p>
+          I’m an IT graduate with professional experience as both a Software Development Engineer (SDE) and Quality Assurance (QA) specialist. 
+          In my 6-month internship, I engineered responsive, user-friendly web interfaces, optimized backend processes, and integrated scalable features using modern frameworks. 
+          On the QA side, I ensured product stability through thorough manual and automated testing, built a Maven dependency analysis tool, and contributed to UI enhancements and performance upgrades. 
+          I’m driven by a passion for turning ideas into functional, polished solutions that deliver a seamless user experience and meet the highest quality standards.
+        </p>
         <p><strong>Skills:</strong> Java, Python, JavaScript, HTML, CSS, PHP, Spring Boot, React, Node.js, Angular, Maven, Git, Firebase.</p>
       </div>
-     <img src="portfolio.jpeg" alt="Vaishnavi" />
+      <img src="portfolio.jpeg" alt="Vaishnavi" />
     </section>
 
- <!-- Experience -->
-<section id="experience">
-  <h3>Experience</h3>
-  
-  <div class="experience-item">
-    <h4>Software Development Engineer (SDE) Intern – Gen</h4>
-    <span class="duration">Jan 2024 – Jun 2024 | 6 months</span>
-    <ul>
-      <li>Designed and enhanced responsive, user-friendly web interfaces using Angular and charting frameworks to improve data visualization and user engagement.</li>
-      <li>Engineered a Maven dependency analysis tool, streamlining dependency management and reducing build issues.</li>
-      <li>Performed both manual and automated testing to ensure stability, security, and optimal performance across modules.</li>
-      <li>Collaborated on Spring framework upgrades to improve backend maintainability and efficiency.</li>
-      <li>Worked closely with cross-functional teams to deliver reliable, scalable solutions on time.</li>
-    </ul>
-  </div>
-</section>
+    <!-- Experience -->
+    <section id="experience" class="fade-in">
+      <h3>Experience</h3>
+      <div class="experience-item">
+        <h4>Software Development Engineer (SDE) Intern – Gen</h4>
+        <span class="duration">Jan 2024 – Jun 2024 | 6 months</span>
+        <ul>
+          <li>Designed and enhanced responsive, user-friendly web interfaces using Angular and charting frameworks to improve data visualization and user engagement.</li>
+          <li>Engineered a Maven dependency analysis tool, streamlining dependency management and reducing build issues.</li>
+          <li>Performed both manual and automated testing to ensure stability, security, and optimal performance across modules.</li>
+          <li>Collaborated on Spring framework upgrades to improve backend maintainability and efficiency.</li>
+          <li>Worked closely with cross-functional teams to deliver reliable, scalable solutions on time.</li>
+        </ul>
+      </div>
+    </section>
 
-<section id="Education">
-  <h3>Education</h3>
-  
-  <div class="education-item">
-    <h4>B.Tech in Information Technology</h4>
-    <span class="institution">Madras Institute of Technology, Anna University</span><br>
-    <span class="duration">2019 – 2023</span>
-    <p>
-      Graduated with a strong foundation in software development, data structures, algorithms, and web technologies.
-      Developed multiple academic and personal projects in web development and machine learning.
-    </p>
+    <!-- Education -->
+    <section id="Education" class="fade-in">
+      <h3>Education</h3>
+      <div class="education-item">
+        <h4>B.Tech in Information Technology</h4>
+        <span class="institution">Madras Institute of Technology, Anna University</span><br>
+        <span class="duration">2019 – 2023</span>
+        <p>
+          Graduated with a strong foundation in software development, data structures, algorithms, and web technologies.
+          Developed multiple academic and personal projects in web development and machine learning.
+        </p>
+        <h4>Achievements</h4>
+        <ul>
+          <li>Participated in Niral Thiruvizha Tamil Nadu Government Hackathon and secured 9th place.</li>
+        </ul>
+        <h4>Publication</h4>
+        <p>
+          <em>"Transcribing & Translating Tamil Nadu Govt Function Videos using Whisper AI"</em> – 
+          International Journal for Science and Advanced Technology in Engineering (IJSATE), May 2025.<br>
+          Developed an AI-based pipeline for multilingual accessibility, including speech-to-text, translation, and transcription.<br>
+          <a href="https://ijsate.com/v2i5p81/" target="_blank">View Publication</a>
+        </p>
+      </div>
+    </section>
 
-    <h4>Achievements</h4>
-    <ul>
-      <li>Participated in Niral Thiruvizha Tamil Nadu Government Hackathon and secured 9th place.</li>
-    </ul>
+    <!-- Projects -->
+    <section id="projects" class="fade-in">
+      <h3>Selected Projects</h3>
+      <div class="projects">
+        <div class="project">
+          <h4>Vegetable Classification (Machine Learning)</h4>
+          <p>Developed a convolutional neural network (CNN) model using Python and TensorFlow to classify 15 types of vegetables from images with 95% accuracy. Utilized OpenCV for preprocessing and data augmentation to improve model robustness.</p>
+          <div class="tags"><span>Python</span><span>TensorFlow</span><span>CNN</span><span>OpenCV</span></div>
+        </div>
 
-    <h4>Publication</h4>
-    <p>
-      <em>"Transcribing & Translating Tamil Nadu Govt Function Videos using Whisper AI"</em> – 
-      International Journal for Science and Advanced Technology in Engineering (IJSATE), May 2025.<br>
-      Developed an AI-based pipeline for multilingual accessibility, including speech-to-text, translation, and transcription.<br>
-      <a href="https://ijsate.com/v2i5p81/" target="_blank">View Publication</a>
-    </p>
-  </div>
-</section>
+        <div class="project">
+          <h4>Library Management System</h4>
+          <p>Built a full-stack web application to manage library books and user lending history. Implemented search, filtering, and user authentication features using HTML, CSS, PHP, JavaScript, and MySQL for backend database management.</p>
+          <div class="tags"><span>HTML</span><span>CSS</span><span>PHP</span><span>JavaScript</span><span>MySQL</span></div>
+        </div>
 
-
-<section id="projects">
-  <h3>Selected Projects</h3>
-  <div class="projects">
-
-    <div class="project">
-      <h4>Vegetable Classification (Machine Learning)</h4>
-      <p>Developed a convolutional neural network (CNN) model using Python and TensorFlow to classify 15 types of vegetables from images with 95% accuracy. Utilized OpenCV for preprocessing and data augmentation to improve model robustness.</p>
-      <div class="tags"><span>Python</span><span>TensorFlow</span><span>CNN</span><span>OpenCV</span></div>
-    </div>
-
-    <div class="project">
-      <h4>Library Management System</h4>
-      <p>Built a full-stack web application to manage library books and user lending history. Implemented search, filtering, and user authentication features using HTML, CSS, PHP, JavaScript, and MySQL for backend database management.</p>
-      <div class="tags"><span>HTML</span><span>CSS</span><span>PHP</span><span>JavaScript</span><span>MySQL</span></div>
-    </div>
-
-    <div class="project">
-      <h4>Recipe Organiser</h4>
-      <p>Created a responsive React.js application to browse, search, and filter recipes by category. Integrated local storage and browser memory for data persistence, enabling users to save favorite recipes and access them offline. Designed a clean UI for easy navigation on both desktop and mobile devices.</p>
-      <div class="tags"><span>React.js</span><span>JavaScript</span><span>LocalStorage</span><span>Responsive Design</span></div>
-    </div>
-
-  </div>
-</section>
-
-
-
-   
+        <div class="project">
+          <h4>Recipe Organiser</h4>
+          <p>Created a responsive React.js application to browse, search, and filter recipes by category. Integrated local storage and browser memory for data persistence, enabling users to save favorite recipes and access them offline. Designed a clean UI for easy navigation on both desktop and mobile devices.</p>
+          <div class="tags"><span>React.js</span><span>JavaScript</span><span>LocalStorage</span><span>Responsive Design</span></div>
+        </div>
+      </div>
+    </section>
 
     <!-- Contact -->
-    <section id="contact">
+    <section id="contact" class="fade-in">
       <h3>Contact</h3>
       <div class="contact-info">
         <p>Email: <a href="mailto:vaishupadma286@gmail.com">vaishupadma286@gmail.com</a></p>
@@ -263,7 +303,48 @@ I’m driven by a passion for turning ideas into functional, polished solutions 
   <footer>
     © 2025 Vaishnavi V — Portfolio Website
   </footer>
+
+  <script>
+    // Fade in elements on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+
+    // Dark Mode Toggle
+    const toggleBtn = document.getElementById('dark-mode-toggle');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      toggleBtn.textContent = "☀️";
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const theme = document.documentElement.getAttribute('data-theme');
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        toggleBtn.textContent = "🌙";
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        toggleBtn.textContent = "☀️";
+      }
+    });
+  </script>
 </body>
 </html>
-
-
